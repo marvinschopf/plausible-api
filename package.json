@@ -1,0 +1,17 @@
+{
+  "name": "plausible-js",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "repository": "https://github.com/marvinschopf/plausible-js.git",
+  "author": "Marvin Schopf",
+  "license": "Apache-2.0",
+  "private": false,
+  "devDependencies": {
+    "@types/node": "^14.14.30",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.5"
+  },
+  "dependencies": {
+    "node-fetch": "2.6.1"
+  }
+}
