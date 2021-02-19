@@ -25,5 +25,9 @@
   },
   "dependencies": {
     "node-fetch": "2.6.1"
+  },
+  "scripts": {
+    "build": "tsc",
+    "disclaimer": "yarn licenses generate-disclaimer > NOTICE"
   }
 }
