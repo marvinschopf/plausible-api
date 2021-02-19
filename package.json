@@ -2,8 +2,20 @@
   "name": "plausible-js",
   "version": "1.0.0",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "funding": "https://sponsor.marvinschopf.com/plausible-js",
   "repository": "https://github.com/marvinschopf/plausible-js.git",
-  "author": "Marvin Schopf",
+  "author": {
+    "name": "Marvin Schopf",
+    "url": "https://www.marvinschopf.com",
+    "email": "marvin@schopf.biz"
+  },
+  "keywords": [
+    "plausible",
+    "plausible analytics",
+    "analytics",
+    "plausible api"
+  ],
   "license": "Apache-2.0",
   "private": false,
   "devDependencies": {
