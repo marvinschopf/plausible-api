@@ -30,6 +30,7 @@
 	},
 	"scripts": {
 		"build": "tsc",
+		"test": "ava",
 		"disclaimer": "yarn licenses generate-disclaimer > NOTICE"
 	},
 	"files": [
