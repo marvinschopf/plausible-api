@@ -120,9 +120,9 @@ export default class PlausibleClient {
 		metrics: Array<"visitors" | "pageviews" | "bounce_rate" | "visit_duration">,
 		filters?: string
 	): Promise<{
-		bounceRate?: number;
+		bounce_rate?: number;
 		pageviews?: number;
-		visitDuration?: number;
+		visit_duration?: number;
 		visitors?: number;
 	}> {
 		const metricsParam: string = metrics.join(",");
