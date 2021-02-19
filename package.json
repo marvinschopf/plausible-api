@@ -1,10 +1,10 @@
 {
-  "name": "plausible-js",
+  "name": "plausible-api",
   "version": "1.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "funding": "https://sponsor.marvinschopf.com/plausible-js",
-  "repository": "https://github.com/marvinschopf/plausible-js.git",
+  "funding": "https://sponsor.marvinschopf.com/plausible-api",
+  "repository": "https://github.com/marvinschopf/plausible-api.git",
   "author": {
     "name": "Marvin Schopf",
     "url": "https://www.marvinschopf.com",
