@@ -46,7 +46,7 @@ export default class PlausibleClient {
 
 	public async getTimeseries(
 		siteId: string,
-		timePeriod: "12mo" | "6mo" | "30d" | "7d" | "month" | "day",
+		period: "12mo" | "6mo" | "30d" | "7d" | "month" | "day",
 		filters?: string,
 		interval?: "date" | "month"
 	): Promise<{ date: Date; value: number }[]> {
@@ -58,7 +58,7 @@ export default class PlausibleClient {
 			additionalParams = `${additionalParams}&filters=${filters}`;
 		}
 		const response: Response = await fetch(
-			`${API_BASE}/timeseries?site_id=${siteId}&period=${timePeriod}${additionalParams}`,
+			`${API_BASE}/timeseries?site_id=${siteId}&period=${period}${additionalParams}`,
 			{
 				headers: {
 					Authorization: `Bearer ${this.apiKey}`,
@@ -94,7 +94,7 @@ export default class PlausibleClient {
 
 	public async aggregate(
 		siteId: string,
-		timePeriod: "12mo" | "6mo" | "30d" | "7d" | "month" | "day",
+		period: "12mo" | "6mo" | "30d" | "7d" | "month" | "day",
 		metrics: Array<"visitors" | "pageviews" | "bounce_rate" | "visit_duration">,
 		filters?: string
 	): Promise<{
@@ -109,7 +109,7 @@ export default class PlausibleClient {
 			filtersParam = `&filters=${filters}`;
 		}
 		const response: Response = await fetch(
-			`${API_BASE}/aggregate?site_id=${siteId}&period=${timePeriod}&metrics=${metricsParam}${filtersParam}`,
+			`${API_BASE}/aggregate?site_id=${siteId}&period=${period}&metrics=${metricsParam}${filtersParam}`,
 			{
 				headers: {
 					Authorization: `Bearer ${this.apiKey}`,
@@ -117,7 +117,18 @@ export default class PlausibleClient {
 			}
 		);
 		if (response.status === 200) {
-			return await response.json();
+			let aggregateResponse: {
+				bounceRate?: number;
+				pageviews?: number;
+				visitDuration?: number;
+				visitors?: number;
+			} = {};
+			let value: any;
+			let key: string;
+			for ([key, value] of Object.entries(await response.json())) {
+				aggregateResponse[key] = value.value;
+			}
+			return aggregateResponse;
 		} else {
 			let responseJson: any;
 			try {
