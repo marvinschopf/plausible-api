@@ -1,9 +1,11 @@
 # 📊 plausible-api
+
 📈 Unofficial Node.js client for the **API** of [Plausible Analytics](https://plausible.io/).
 
 **Important note:** Plausible's API is currently still in public beta. The functionality can be changed at any time. I try to keep the library up to date and adapt it to the API changes, but I cannot guarantee this.
 
 ## Installation
+
 The library can be installed as usual via `npm`:
 
 ```bash
@@ -17,32 +19,37 @@ yarn add plausible-api
 ```
 
 ## Usage
+
 The client must first be imported and an instance created:
 
 ```javascript
-const Plausible = require("plausible-api")
+const Plausible = require("plausible-api");
 
 const client = new Plausible("<YOUR API KEY>");
 ```
 
 ### `getRealtimeVisitors`
+
 **Parameters:**
-- `siteId` (`string`): The domain of the website that is set at Plausible.  
+
+- `siteId` (`string`): The domain of the website that is set at Plausible.
 
 ```javascript
-await client.getRealtimeVisitors("example.com")
+await client.getRealtimeVisitors("example.com");
 // => 191
 ```
 
 ### `getTimeseries`
+
 **Parameters:**
+
 - `siteId` (`string`): The domain of the website that is set at Plausible.
 - `period` (`"12mo" | "6mo" | "30d" | "7d" | "month" | "day"`): Time periods
 - `filters` (`string`, _optional_): Optional filters as documented [here](https://plausible.io/docs/stats-api#filtering)
 - `interval` (`"date" | "month"`, _optional_): Choose your reporting interval
 
 ```javascript
-await client.getTimeseries("example.com", "month", "", "date")
+await client.getTimeseries("example.com", "month", "", "date");
 // => [
 //      { date: '2021-02-01', value: 5968 },
 //      { date: '2021-02-02', value: 1234 },
@@ -76,18 +83,27 @@ await client.getTimeseries("example.com", "month", "", "date")
 ```
 
 ### `aggregate`
+
 **Parameters:**
+
 - `siteId` (`string`): The domain of the website that is set at Plausible.
 - `period` (`"12mo" | "6mo" | "30d" | "7d" | "month" | "day"`): Time periods
 - `metrics` (`Array<"visitors" | "pageviews" | "bounce_rate" | "visit_duration">`): List of metrics to aggregate
 - `filters` (`string`, _optional_): Optional filters as documented [here](https://plausible.io/docs/stats-api#filtering)
 
 ```javascript
-await client.aggregate("example.com", "7d", ["visit_duration", "visitors", "pageviews", "bounce_rate", "visit_duration"])
+await client.aggregate("example.com", "7d", [
+	"visit_duration",
+	"visitors",
+	"pageviews",
+	"bounce_rate",
+	"visit_duration",
+]);
 // => { bounce_rate: 50, pageviews: 6, visit_duration: 14, visitors: 2 }
 ```
 
 ## License
+
 Copyright 2021 Marvin Schopf
 
 Licensed under the Apache License, Version 2.0 (the "License");
