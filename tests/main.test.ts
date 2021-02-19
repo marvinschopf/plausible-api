@@ -11,7 +11,7 @@ test("getRealtimeUsers", async function (t: ExecutionContext) {
 	t.is(response >= 0, true);
 });
 
-test("", async function (t: ExecutionContext) {
+test("getTimeseries", async function (t: ExecutionContext) {
 	const response = await client.getTimeseries(SITE_ID, "12mo", "", "month");
 	t.is(response.length, 12);
 });
