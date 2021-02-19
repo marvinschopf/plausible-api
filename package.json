@@ -30,5 +30,12 @@
   "scripts": {
     "build": "tsc",
     "disclaimer": "yarn licenses generate-disclaimer > NOTICE"
-  }
+  },
+  "files": [
+    "LICENSE",
+    "NOTICE",
+    "package.json",
+    "README.md",
+    "dist/"
+  ]
 }
