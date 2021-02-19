@@ -28,8 +28,8 @@ test("aggregate", async function (t: ExecutionContext) {
 		["visitors", "visit_duration", "pageviews", "bounce_rate"],
 		""
 	);
-	t.is(response.bounceRate > 0, true);
-	t.is(response.pageviews > 0, true);
-	t.is(response.pageviews > 5, true);
-	t.is(response.visitDuration > 0, true);
+	t.is(response.bounce_rate >= 1, true);
+	t.is(response.visitors >= 1, true);
+	t.is(response.pageviews >= 5, true);
+	t.is(response.visit_duration >= 10, true);
 });
