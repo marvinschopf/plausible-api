@@ -20,3 +20,16 @@ test("getTimeseries 7d date", async function (t: ExecutionContext) {
 	const response = await client.getTimeseries(SITE_ID, "7d", "", "date");
 	t.is(response.length, 8);
 });
+
+test("aggregate", async function (t: ExecutionContext) {
+	const response = await client.aggregate(
+		SITE_ID,
+		"30d",
+		["visitors", "visit_duration", "pageviews", "bounce_rate"],
+		""
+	);
+	t.is(response.bounceRate > 10, true);
+	t.is(response.pageviews > 0, true);
+	t.is(response.pageviews > 5, true);
+	t.is(response.visitDuration > 0, true);
+});
