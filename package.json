@@ -1,41 +1,50 @@
 {
-  "name": "plausible-api",
-  "version": "1.0.0",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "funding": "https://sponsor.marvinschopf.com/plausible-api",
-  "repository": "https://github.com/marvinschopf/plausible-api.git",
-  "author": {
-    "name": "Marvin Schopf",
-    "url": "https://www.marvinschopf.com",
-    "email": "marvin@schopf.biz"
-  },
-  "keywords": [
-    "plausible",
-    "plausible analytics",
-    "analytics",
-    "plausible api"
-  ],
-  "license": "Apache-2.0",
-  "private": false,
-  "devDependencies": {
-    "@types/node": "^14.14.30",
-    "@types/node-fetch": "^2.5.8",
-    "ts-node": "^9.1.1",
-    "typescript": "^4.1.5"
-  },
-  "dependencies": {
-    "node-fetch": "2.6.1"
-  },
-  "scripts": {
-    "build": "tsc",
-    "disclaimer": "yarn licenses generate-disclaimer > NOTICE"
-  },
-  "files": [
-    "LICENSE",
-    "NOTICE",
-    "package.json",
-    "README.md",
-    "dist/"
-  ]
+	"name": "plausible-api",
+	"version": "1.0.0",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"funding": "https://sponsor.marvinschopf.com/plausible-api",
+	"repository": "https://github.com/marvinschopf/plausible-api.git",
+	"author": {
+		"name": "Marvin Schopf",
+		"url": "https://www.marvinschopf.com",
+		"email": "marvin@schopf.biz"
+	},
+	"keywords": [
+		"plausible",
+		"plausible analytics",
+		"analytics",
+		"plausible api"
+	],
+	"license": "Apache-2.0",
+	"private": false,
+	"devDependencies": {
+		"@types/node": "^14.14.30",
+		"@types/node-fetch": "^2.5.8",
+		"ava": "^3.15.0",
+		"ts-node": "^9.1.1",
+		"typescript": "^4.1.5"
+	},
+	"dependencies": {
+		"node-fetch": "2.6.1"
+	},
+	"scripts": {
+		"build": "tsc",
+		"disclaimer": "yarn licenses generate-disclaimer > NOTICE"
+	},
+	"files": [
+		"LICENSE",
+		"NOTICE",
+		"package.json",
+		"README.md",
+		"dist/"
+	],
+	"ava": {
+		"extensions": [
+			"ts"
+		],
+		"require": [
+			"ts-node/register"
+		]
+	}
 }
