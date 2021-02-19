@@ -18,10 +18,5 @@ test("getTimeseries 12mo month", async function (t: ExecutionContext) {
 
 test("getTimeseries 7d date", async function (t: ExecutionContext) {
 	const response = await client.getTimeseries(SITE_ID, "7d", "", "date");
-	t.is(response.length, 7);
-});
-
-test("getTimeseries day date", async function (t: ExecutionContext) {
-	const response = await client.getTimeseries(SITE_ID, "day", "", "date");
-	t.is(response.length, 7);
+	t.is(response.length, 8);
 });
