@@ -90,7 +90,7 @@ export default class PlausibleClient {
 		if (response.status === 200) {
 			let timeSeriesObjects: { date: Date; value: number }[] = [];
 			await asyncForEach(
-				await response.json(),
+				(await response.json()).results,
 				async function (timeSeriesElement: { date: Date; value: number }) {
 					timeSeriesObjects.push(timeSeriesElement);
 				}
@@ -147,7 +147,7 @@ export default class PlausibleClient {
 			} = {};
 			let value: any;
 			let key: string;
-			for ([key, value] of Object.entries(await response.json())) {
+			for ([key, value] of Object.entries((await response.json()).results)) {
 				aggregateResponse[key] = value.value;
 			}
 			return aggregateResponse;
