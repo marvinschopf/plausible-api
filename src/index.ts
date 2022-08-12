@@ -22,7 +22,7 @@
 
 import fetch, { Response } from "node-fetch";
 
-const API_BASE: string = "https://plausible.io/api/v1/stats";
+const DEFAULT_API_BASE: string = "https://plausible.io/api/v1/stats";
 
 async function asyncForEach(array: any[], callback: Function) {
 	for (let index: number = 0; index < array.length; index++) {
@@ -32,14 +32,16 @@ async function asyncForEach(array: any[], callback: Function) {
 
 export default class PlausibleClient {
 	apiKey: string;
+	apiBase: string;
 
-	constructor(apiKey: string) {
+	constructor(apiKey: string, apiBase: string = DEFAULT_API_BASE) {
 		this.apiKey = apiKey;
+		this.apiBase = apiBase;
 	}
 
 	public async getRealtimeVisitors(siteId: string): Promise<number> {
 		const response: Response = await fetch(
-			`${API_BASE}/realtime/visitors?site_id=${siteId}`,
+			`${this.apiBase}/realtime/visitors?site_id=${siteId}`,
 			{
 				headers: {
 					Authorization: `Bearer ${this.apiKey}`,
@@ -80,7 +82,7 @@ export default class PlausibleClient {
 			additionalParams = `${additionalParams}&filters=${filters}`;
 		}
 		const response: Response = await fetch(
-			`${API_BASE}/timeseries?site_id=${siteId}&period=${period}${additionalParams}`,
+			`${this.apiBase}/timeseries?site_id=${siteId}&period=${period}${additionalParams}`,
 			{
 				headers: {
 					Authorization: `Bearer ${this.apiKey}`,
@@ -131,7 +133,7 @@ export default class PlausibleClient {
 			filtersParam = `&filters=${filters}`;
 		}
 		const response: Response = await fetch(
-			`${API_BASE}/aggregate?site_id=${siteId}&period=${period}&metrics=${metricsParam}${filtersParam}`,
+			`${this.apiBase}/aggregate?site_id=${siteId}&period=${period}&metrics=${metricsParam}${filtersParam}`,
 			{
 				headers: {
 					Authorization: `Bearer ${this.apiKey}`,
